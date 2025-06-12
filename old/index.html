@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Access test2</title>
+</head>
+<body>
+    <h1>Webcam Feed</h1>
+    <video id="video" autoplay playsinline></video>
+
+    <script src="index.js"></script>
+
+    <button id="start">Start Webcam</button>
+    <video id="video" autoplay playsinline></video>
+
+    <script>
+    document.getElementById('start').addEventListener('click', async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+            document.getElementById('video').srcObject = stream;
+        } catch (error) {
+            console.error("Error accessing webcam/microphone:", error);
+        }
+    });
+</script>
+</body>
+</html>
